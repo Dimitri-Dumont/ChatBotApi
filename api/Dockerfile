@@ -21,7 +21,7 @@ RUN pip install torch torchvision torchaudio --index-url https://download.pytorc
 COPY . .
 
 # Expose port 8080 for the FastAPI application
-EXPOSE 8080
+EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8080", "--log-level", "debug"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]
