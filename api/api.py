@@ -16,13 +16,7 @@ app.add_middleware(
 )
 
 # Device configuration
-if torch.backends.mps.is_available() and torch.backends.mps.is_built():
-    device = torch.device("mps")
-elif torch.cuda.is_available():
-    device = torch.device("cuda")
-else:
-    device = torch.device("cpu")
-
+device = torch.device("cpu")  # Force the usage of CPU
 # Load fine tuned model.
 tokenizer = AutoTokenizer.from_pretrained("./movie_10_100")
 model = AutoModelForCausalLM.from_pretrained("./movie_10_100").to(device)
