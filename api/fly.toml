@@ -1,18 +1,20 @@
-app = 'api-dawn-cloud-1945'
-primary_region = 'lax'
+app = "api-dawn-cloud-1945"
+primary_region = "lax"
+# vm.size = "a100-40gb"
 
 [build]
 
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = "stop"
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
+  processes = ["app"]
 
 [guest]
-  cpus = 4  # Set the number of CPUs
-  memory_mb = 2048  # Set the memory to 1024 MB (1 GB) or any appropriate value
-  gpus = 1  # Number of GPUs to allocate
-  gpu_kind = "l40s"  # Specify the GPU typ
+  cpus = 4  # Number of CPUs allocated to the guest container
+  memory_mb = 16384  # 16 GB of memory
+  #gpus = 1  # Number of GPUs allocated to the guest
+  #gpu_kind = "l40s"  # GPU type for the guest
+

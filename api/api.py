@@ -7,14 +7,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # Initialize FastAPI app
 app = FastAPI()
 
-# CORS middleware configuration
-origins = [
-    "http://localhost:3000",  # Local frontend URLs
-    "http://localhost:3001"
-]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # Allow requests from any origin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
