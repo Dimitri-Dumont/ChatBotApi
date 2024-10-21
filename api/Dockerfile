@@ -1,12 +1,15 @@
-# Use NVIDIA's base image with CUDA support (Python 3.9, CUDA 11.7, CUDNN 8)
-FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu20.04
+# Use a Python 3.9 base image
+FROM python:3.9-slim
 
 # Environment variables to ensure clean execution
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Install Python and pip
-RUN apt-get update && apt-get install -y python3 python3-pip
+# Install system dependencies for OpenCV and other libraries
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    libgl1-mesa-glx \
+    libglib2.0-0
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -14,12 +17,13 @@ WORKDIR /app
 # Copy the requirements file into the container
 COPY requirements.txt ./
 
-# Install the dependencies (including PyTorch with CUDA support)
+# Install dependencies, including the CPU-only version of PyTorch
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the app files into the container
 COPY . .
 
+# Expose port 8080 for the FastAPI application
 EXPOSE 8080
 
 # Command to run the application
