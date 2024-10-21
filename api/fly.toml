@@ -1,9 +1,4 @@
-# fly.toml app configuration file generated for api-spring-meadow-927 on 2024-10-20T16:24:49-07:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
-app = 'api-spring-meadow-927'
+app = 'api-dawn-cloud-1945'
 primary_region = 'lax'
 
 [build]
@@ -16,5 +11,8 @@ primary_region = 'lax'
   min_machines_running = 0
   processes = ['app']
 
-vm.size = "a100-40gb"
-
+[guest]
+  cpus = 4  # Set the number of CPUs
+  memory_mb = 2048  # Set the memory to 1024 MB (1 GB) or any appropriate value
+  gpus = 1  # Number of GPUs to allocate
+  gpu_kind = "l40s"  # Specify the GPU typ
