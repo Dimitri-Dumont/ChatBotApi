@@ -18,8 +18,8 @@ app.add_middleware(
 # Device configuration
 device = torch.device("cpu")  # Force the usage of CPU
 # Load fine tuned model.
-tokenizer = AutoTokenizer.from_pretrained("./movie_10_100")
-model = AutoModelForCausalLM.from_pretrained("./movie_10_100").to(device)
+tokenizer = AutoTokenizer.from_pretrained("./Movies_latest")
+model = AutoModelForCausalLM.from_pretrained("./Movies_latest").to(device)
 
 # load vanilla model
 #tokenizer = AutoTokenizer.from_pretrained("gpt2-medium")
